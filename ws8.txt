@@ -1,0 +1,44 @@
+Script started on 2021-10-29 04:29:43+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="25"]
+]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ awk - [KF $'\t' '{ if (S[K$(NF-3) == "N") print $(NF-1) }' > [K]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ awk -F $'\t' '{ if ($(NF-3) == "N") print $(NF-1) }' > [K]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ awk -F $'\t' '{ if ($(NF-3) == "N") print $(NF-1) }' > [K]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ awk -F $'\t' '{ if ($(NF-3) == "N") print $(NF-1) }' > [K]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ awk -F $'\t' '{ if ($(NF-3) == "N") print $(NF-1) }' > 'unverified.txt'
+^C
+]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ awk -F $'\t' '{ if ($(NF-3) == "N") print $(NF-1) }' > 'unverified.txt'[C[1@ [1@.[1@.[1@/[1P[1@/[1@a[1@m[31@azon_reviews_us_Books_v1_02.tsv[C[1@ 
+]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ awk -F $'\t' '{ if ($(NF-3) == "N") print $(NF-1) }' ../amazon_reviews_us_Books_v1_02.tsv  > 'unverified.txt'[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kverified.txt[1P[1@T
+]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ awk -F $'\t' '{ if ($(NF-3) == "T") print $(NF-1) }' ../amazon_reviews_us_Books_v1_02.tsv  > verified.txt[1P[1@Y
+]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ awk -F $'\t' '{ if ($(NF-3) == "Y") print $(NF-1) }' ../amazon_reviews_us_Books_v1_02.tsv  > verified.txt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CT[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Khead -n 100 unverified.txt > unverified_100.txt
+]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ head -n 100 unverified.txt > unverified_100.txt[1Pverified_100.txt[1Pverified_100.txt[1P[1P
+]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ ls -lt
+total 2704636
+-rw-rw-r-- 1 benbow benbow      89200 Oct 29 04:59 verified_100.txt
+-rw-rw-r-- 1 benbow benbow     100814 Oct 29 04:59 unverified_100.txt
+-rw-rw-r-- 1 benbow benbow      87842 Oct 29 04:54 unv_100_mod.txt
+-rw-rw-r-- 1 benbow benbow  226617341 Oct 29 04:47 verified.txt
+-rw-rw-r-- 1 benbow benbow 2542638915 Oct 29 04:38 unverified.txt
+-rw-rw-r-- 1 benbow benbow          0 Oct 29 04:29 ws8.txt
+]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ sed 's/[,.;]//g' unverified_100.txt | sed 's/\band\b//g' | sed 's/\bor\b//g' | sed 's/\bif\b//g' | sed 's/\bin\b//g' | sed 's/\bit\b//gI' | sed 's/<[a-z]\+ \/>/ /g' | sed 's/&quot/ /g' | sed 's/\\//g' | sed 's/\bto\b//g' | sed 's/\bthe\b//g' | sed 's/\bon\b//g' | tr -s ' ' | tr " " "\n" | sed '/^$/d' | sort | uniq -c | sort -nrk 1 | head
+    506 of
+    382 a
+    315 is
+    236 that
+    220 I
+    193 book
+    160 this
+    144 as
+    119 with
+    118 for
+]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ sed 's/[,.;]//g' unverified_100.txt | sed 's/\band\b//g' | sed 's/\bor\b//g' | sed 's/\bif\b//g' | sed 's/\bin\b//g' | sed 's/\bit\b//gI' | sed 's/<[a-z]\+ \/>/ /g' | sed 's/&quot/ /g' | sed 's/\\//g' | sed 's/\bto\b//g' | sed 's/\bthe\b//g' | sed 's/\bon\b//g' | tr -s ' ' | tr " " "\n" | sed '/^$/d' | sort | uniq -c | sort -nrk 1 | head[A[A]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cverified_100.txt | sed 's/\band\b//g' | sed 's/\bor\b//g' | sed 's/\bif\b//g' | sed 's/\bin\b//g' | sed 's/\bit\b//gI' | sed 's/<[a-z]\+ \/>/ /g' | sed 's/&quot/ /g' | sed 's/\\//g' | sed 's/\bto\b//g' | sed 's/\bthe\b//g' | sed 's/\bon\b//g' [1P[A[A]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cverified_100.txt | sed 's/\band\b//g' | sed 's/\bor\b//g' | sed 's/\bif\b//g' | sed 's/\bin\b//g' | sed 's/\bit\b//gI' | sed 's/<[a-z]\+ \/>/ /g' | sed 's/&quot/ /g' | sed 's/\\//g' | sed 's/\bto\b//g' | sed 's/\bthe\b//g' | sed 's/\bon\b//g' |[1P[A[A]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+
+    436 of
+    356 a
+    267 is
+    207 I
+    170 that
+    164 book
+    155 for
+    128 this
+    109 with
+    109 are
+]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ history > cmds.log
+]0;benbow@f6linuxA5: ~/ws8[01;32mbenbow@f6linuxA5[00m:[01;34m~/ws8[00m$ exit
+
+Script done on 2021-10-29 05:02:34+00:00 [COMMAND_EXIT_CODE="0"]

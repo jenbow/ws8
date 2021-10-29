@@ -1,0 +1,10 @@
+  687  awk -F $'\t' '{ if ($(NF-3) == "N") print $(NF-1) }' > 'unverified.txt'
+  688  awk -F $'\t' '{ if ($(NF-3) == "N") print $(NF-1) }' ../amazon_reviews_us_Books_v1_02.tsv  > 'unverified.txt'
+  689  awk -F $'\t' '{ if ($(NF-3) == "T") print $(NF-1) }' ../amazon_reviews_us_Books_v1_02.tsv  > verified.txt
+  690  awk -F $'\t' '{ if ($(NF-3) == "Y") print $(NF-1) }' ../amazon_reviews_us_Books_v1_02.tsv  > verified.txt
+  691  head -n 100 unverified.txt > unverified_100.txt
+  692  head -n 100 verified.txt > verified_100.txt
+  693  ls -lt
+  694  sed 's/[,.;]//g' unverified_100.txt | sed 's/\band\b//g' | sed 's/\bor\b//g' | sed 's/\bif\b//g' | sed 's/\bin\b//g' | sed 's/\bit\b//gI' | sed 's/<[a-z]\+ \/>/ /g' | sed 's/&quot/ /g' | sed 's/\\//g' | sed 's/\bto\b//g' | sed 's/\bthe\b//g' | sed 's/\bon\b//g' | tr -s ' ' | tr " " "\n" | sed '/^$/d' | sort | uniq -c | sort -nrk 1 | head
+  695  sed 's/[,.;]//g' verified_100.txt | sed 's/\band\b//g' | sed 's/\bor\b//g' | sed 's/\bif\b//g' | sed 's/\bin\b//g' | sed 's/\bit\b//gI' | sed 's/<[a-z]\+ \/>/ /g' | sed 's/&quot/ /g' | sed 's/\\//g' | sed 's/\bto\b//g' | sed 's/\bthe\b//g' | sed 's/\bon\b//g' | tr -s ' ' | tr " " "\n" | sed '/^$/d' | sort | uniq -c | sort -nrk 1 | head
+  696  history | tail > cmds.log
